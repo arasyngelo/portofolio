@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Angelo | Business Analyst &amp; Product Manager</title>
+<meta name="description" content="Portfolio of Angelo: PRDs, FSDs, user stories, wireframes, and process maps for HRIS, smart parking (Trafix), and gym management systems.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0D0B24; --card:#1A1740; --card2:#221F52; --ink:#F3F1FF; --muted:#A9A5D4; --line:#2E2A62;
+  --accent:#FFC857; --accent-ink:#0D0B24;
+  --fsd:#5EEAD4; --prd:#FFC857; --story:#9AA9FF; --wire:#FF7AA8; --map:#FF9F5E;
+  --head:"Sora","Segoe UI",system-ui,sans-serif; --body:"DM Sans","Segoe UI",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:4.5rem}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1rem/1.65 var(--body)}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.wrap{max-width:66rem;margin:0 auto;padding:0 1.25rem}
+
+/* nav */
+nav{position:sticky;top:0;z-index:5;background:#0D0B24E6;backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:3.5rem}
+nav b{font:800 1.1rem var(--head)}
+nav ul{display:flex;gap:1.25rem;list-style:none;margin:0;padding:0;font-size:.95rem}
+nav ul a{text-decoration:none;color:var(--muted)} nav ul a:hover{color:var(--ink)}
+
+/* hero */
+.hero{position:relative;overflow:hidden;padding:4.5rem 0 3.5rem;border-bottom:1px solid var(--line);
+  background:radial-gradient(#ffffff14 1px,transparent 1px) 0 0/22px 22px,radial-gradient(48rem 20rem at 10% 0,#4A3BB070,transparent)}
+.hero .wrap{display:grid;gap:3rem;align-items:center}
+@media(min-width:52rem){.hero .wrap{grid-template-columns:1.15fr .85fr}}
+.hero h1{font:800 clamp(3rem,9vw,6rem)/.95 var(--head);letter-spacing:-.04em;margin:0 0 1.25rem}
+.hero .role{font:700 1.25rem var(--head);color:var(--accent);margin:0 0 1rem}
+.hero p.lead{max-width:34rem;font-size:1.1rem;color:var(--muted);margin:0 0 1.5rem}
+.stats{display:flex;gap:2rem;margin:2rem 0 0;padding:0;list-style:none}
+.stats b{display:block;font:800 1.9rem/1 var(--head)} .stats span{font-size:.85rem;color:var(--muted)}
+
+/* document stack, the one moving moment */
+.stack{position:relative;height:20rem;max-width:22rem;width:100%;margin:0 auto}
+.stack div{position:absolute;left:0;right:0;top:50%;height:8.5rem;margin-top:-4.25rem;background:var(--card);border:1px solid var(--line);
+  border-left:6px solid var(--c);border-radius:14px;padding:1rem 1.15rem;box-shadow:0 14px 30px #0008;
+  transform:translateY(var(--y)) rotate(var(--r));animation:fan .9s cubic-bezier(.2,.8,.2,1) both}
+.stack small{font:700 .8rem var(--head);color:var(--c)}
+.stack h3{font:700 1.05rem/1.25 var(--head);margin:.25rem 0 .5rem}
+.stack i{display:block;height:6px;border-radius:3px;background:var(--line);margin-top:6px;width:90%} .stack i+i{width:65%}
+.stack div:nth-child(1){--c:var(--prd);--y:-5.2rem;--r:-5deg;animation-delay:.05s}
+.stack div:nth-child(2){--c:var(--fsd);--y:-1.7rem;--r:3deg;animation-delay:.15s}
+.stack div:nth-child(3){--c:var(--story);--y:1.7rem;--r:-2deg;animation-delay:.25s}
+.stack div:nth-child(4){--c:var(--wire);--y:5.2rem;--r:4deg;animation-delay:.35s}
+@keyframes fan{from{transform:translateY(0) rotate(0);opacity:0}}
+
+/* filters */
+.filters{display:flex;flex-wrap:wrap;gap:.5rem;padding:2rem 0 .5rem}
+.chip{font:600 .9rem var(--body);color:var(--ink);background:transparent;border:1.5px solid var(--line);border-radius:999px;padding:.35rem 1rem;cursor:pointer}
+.chip:hover{border-color:var(--muted)}
+.chip[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+
+/* projects */
+.project{display:grid;gap:1.5rem;padding:3rem 0;border-bottom:1px solid var(--line)}
+@media(min-width:56rem){.project{grid-template-columns:16rem 1fr;gap:2.5rem}.project>header{position:sticky;top:5rem;align-self:start}}
+.project h2{font:800 1.9rem/1.1 var(--head);letter-spacing:-.02em;margin:0 0 .6rem}
+.project .meta{color:var(--muted);font-size:.95rem;margin:0 0 .9rem}
+.tag{display:inline-block;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:.15rem .75rem;font-size:.8rem;font-weight:600;margin:0 .35rem .35rem 0}
+.docs{display:grid;gap:1rem;grid-template-columns:repeat(auto-fill,minmax(15.5rem,1fr))}
+.doc{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-top:4px solid var(--c);border-radius:14px;padding:1.1rem 1.2rem;transition:transform .2s,border-color .2s}
+.doc:hover{transform:translateY(-3px);border-color:var(--c)}
+.doc.prd{--c:var(--prd)} .doc.fsd{--c:var(--fsd)} .doc.story{--c:var(--story)} .doc.wire{--c:var(--wire)} .doc.map{--c:var(--map)}
+.doc .type{font:700 .8rem var(--head);color:var(--c);margin:0 0 .3rem}
+.doc h3{font:700 1.05rem/1.3 var(--head);margin:0 0 .35rem}
+.doc p{margin:0 0 .9rem;color:var(--muted);font-size:.93rem}
+.doc .btns{margin-top:auto}
+.doc[hidden],.project[hidden]{display:none}
+.btn{display:inline-block;padding:.45rem 1rem;border-radius:8px;font:600 .9rem var(--body);text-decoration:none;border:1.5px solid var(--ink);color:var(--ink);background:transparent}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn:hover{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+details{margin:0 0 .9rem;font-size:.92rem}
+summary{cursor:pointer;font-weight:600;color:var(--story)}
+details blockquote{margin:.6rem 0 0;padding:.7rem .9rem;background:var(--card2);border-radius:10px;color:var(--ink)}
+details blockquote small{display:block;color:var(--muted);margin-top:.4rem}
+
+/* PM + contact */
+.pm,.contact{padding:3.5rem 0}
+.pm{border-bottom:1px solid var(--line)}
+.pm h2,.contact h2{font:800 2rem/1.1 var(--head);letter-spacing:-.02em;margin:0 0 .75rem}
+.pm>.wrap>p,.contact p{color:var(--muted);max-width:36rem;margin:0 0 1.5rem}
+.pm ul{margin:0 0 .9rem;padding-left:1.1rem;color:var(--muted);font-size:.93rem}
+footer{padding:1.5rem 0;color:var(--muted);font-size:.85rem;border-top:1px solid var(--line)}
+@media(max-width:40rem){nav ul{display:none}.stack{height:18rem}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.stack div,.doc{animation:none;transition:none}}
+</style>
+</head>
+<body>
+
+<nav><div class="wrap"><b>Angelo</b>
+<ul><li><a href="#work">Work</a></li><li><a href="#pm">Product management</a></li><li><a href="#contact">Contact</a></li></ul></div></nav>
+
+<header class="hero"><div class="wrap">
+  <div>
+    <h1>Angelo</h1>
+    <p class="role">Business Analyst &amp; Product Manager</p>
+    <p class="lead">I turn messy business needs into specs developers can build from: PRDs, FSDs, user stories, process maps, and wireframes. Information Systems graduate, working daily with real operational data.</p>
+    <a class="btn primary" href="#work">See my work</a>
+    <ul class="stats" id="stats"></ul>
+  </div>
+  <div class="stack" aria-hidden="true">
+    <div><small>PRD</small><h3>Product requirements</h3><i></i><i></i></div>
+    <div><small>FSD</small><h3>Functional specification</h3><i></i><i></i></div>
+    <div><small>User stories</small><h3>As a user, I want...</h3><i></i><i></i></div>
+    <div><small>Wireframe</small><h3>Screens and flows</h3><i></i><i></i></div>
+  </div>
+</div></header>
+
+<main class="wrap" id="work">
+  <div class="filters" role="group" aria-label="Filter documents by type">
+    <button class="chip" data-f="all" aria-pressed="true">All</button>
+    <button class="chip" data-f="prd" aria-pressed="false">PRD</button>
+    <button class="chip" data-f="fsd" aria-pressed="false">FSD</button>
+    <button class="chip" data-f="story" aria-pressed="false">User stories</button>
+    <button class="chip" data-f="wire" aria-pressed="false">Wireframes</button>
+    <button class="chip" data-f="map" aria-pressed="false">Mind maps</button>
+  </div>
+
+  <!-- TRAFIX -->
+  <section class="project" aria-labelledby="t1">
+    <header>
+      <h2 id="t1">Trafix</h2>
+      <p class="meta">Smart parking system with separate products for admins, technicians, operators, finance, and external members.</p>
+      <span class="tag">Full-time</span><span class="tag">Business Analyst</span>
+    </header>
+    <div class="docs">
+      <article class="doc prd" data-t="prd"><p class="type">PRD</p><h3>Admin &amp; Technician</h3><p>Requirements for the admin console and the technician tools used to manage and maintain parking sites.</p><div class="btns"><a class="btn primary" href="docs/prd-trafix-admin-teknisi.pdf" target="_blank" rel="noopener">Read PRD</a></div></article>
+      <article class="doc prd" data-t="prd"><p class="type">PRD</p><h3>Operator</h3><p>Requirements for the operator app used at the gate and on the ground.</p><div class="btns"><a class="btn primary" href="docs/prd-trafix-operator.pdf" target="_blank" rel="noopener">Read PRD</a></div></article>
+      <article class="doc prd" data-t="prd"><p class="type">PRD</p><h3>Finance</h3><p>Requirements for the finance module covering transactions and reporting.</p><div class="btns"><a class="btn primary" href="docs/prd-trafix-finance.pdf" target="_blank" rel="noopener">Read PRD</a></div></article>
+      <article class="doc prd" data-t="prd"><p class="type">PRD</p><h3>Member</h3><p>Requirements for managing member data that comes from outside the core system.</p><div class="btns"><a class="btn primary" href="docs/prd-trafix-member.pdf" target="_blank" rel="noopener">Read PRD</a></div></article>
+      <!-- EDIT: mind map / draw.io / Miro items. Move to the right project or delete. -->
+      <article class="doc map" data-t="map"><p class="type">Mind map</p><h3>[Mind map title]</h3><p>[One line: what this map helped you figure out.]</p><div class="btns"><a class="btn primary" href="img/mindmap-1.png" target="_blank" rel="noopener">View mind map</a></div></article>
+    </div>
+  </section>
+
+  <!-- HRIS -->
+  <section class="project" aria-labelledby="t2">
+    <header>
+      <h2 id="t2">HRIS</h2>
+      <p class="meta">Human resources information system built during my internship, from specs to a clickable design.</p>
+      <span class="tag">Internship</span><span class="tag">Business Analyst</span>
+    </header>
+    <div class="docs">
+      <article class="doc fsd" data-t="fsd"><p class="type">FSD</p><h3>Recruitment module</h3><p>Functional specification for the hiring flow, from job posting to candidate handling.</p><div class="btns"><a class="btn primary" href="docs/fsd-hris-recruitment.pdf" target="_blank" rel="noopener">Read FSD</a></div></article>
+      <article class="doc fsd" data-t="fsd"><p class="type">FSD</p><h3>Project reimbursement</h3><p>Functional specification for submitting, approving, and tracking project reimbursements.</p><div class="btns"><a class="btn primary" href="docs/fsd-hris-reimbursement.pdf" target="_blank" rel="noopener">Read FSD</a></div></article>
+      <article class="doc wire" data-t="wire"><p class="type">Wireframe</p><h3>HRIS screens</h3><p>Screen designs for the HRIS modules, made in Figma.</p><div class="btns"><a class="btn primary" href="PASTE_HRIS_FIGMA_LINK" target="_blank" rel="noopener">Open in Figma</a></div></article>
+      <!-- EDIT: replace the sample below with your real stories from Jira. -->
+      <article class="doc story" data-t="story"><p class="type">User stories</p><h3>Jira backlog</h3><p>Stories written directly in Jira, with acceptance criteria.</p>
+        <details><summary>Read a sample</summary><blockquote>As a [role], I want [goal], so that [benefit].<small>Acceptance criteria: [criterion 1]; [criterion 2]; [criterion 3]</small></blockquote></details>
+        <div class="btns"><a class="btn primary" href="img/jira-backlog.png" target="_blank" rel="noopener">View backlog</a></div></article>
+    </div>
+  </section>
+
+  <!-- GYM -->
+  <section class="project" aria-labelledby="t3">
+    <header>
+      <h2 id="t3">GYM Management System</h2>
+      <p class="meta">A system for running a gym: members, memberships, and daily operations.</p>
+      <span class="tag">Freelance</span><span class="tag">Business Analyst</span><span class="tag">Product Manager</span>
+    </header>
+    <div class="docs">
+      <article class="doc prd" data-t="prd"><p class="type">PRD</p><h3>GYM Management System</h3><p>Product requirements for the full system, written for a freelance client.</p><div class="btns"><a class="btn primary" href="docs/prd-gym-management.pdf" target="_blank" rel="noopener">Read PRD</a></div></article>
+      <article class="doc wire" data-t="wire"><p class="type">Wireframe</p><h3>GYM screens</h3><p>Screen designs for the system, made in Figma.</p><div class="btns"><a class="btn primary" href="PASTE_GYM_FIGMA_LINK" target="_blank" rel="noopener">Open in Figma</a></div></article>
+      <!-- EDIT: wireframe made in draw.io or Miro. Move or delete. -->
+      <article class="doc wire" data-t="wire"><p class="type">Wireframe</p><h3>[Wireframe title]</h3><p>[Made in draw.io or Miro. One line on what it shows.]</p><div class="btns"><a class="btn primary" href="img/wireframe-1.png" target="_blank" rel="noopener">View wireframe</a></div></article>
+    </div>
+  </section>
+</main>
+
+<!-- PRODUCT MANAGEMENT: fill in the [brackets] for each project -->
+<section class="pm" id="pm"><div class="wrap">
+  <h2>Product management</h2>
+  <p>Beyond writing specs, I have owned the product: deciding what to build, in what order, and getting it shipped.</p>
+  <div class="docs">
+    <article class="doc" style="--c:var(--accent)"><p class="type" style="color:var(--accent)">Product Manager</p><h3>PPP</h3><div style="margin:0 0 .7rem"><span class="tag">Internship</span></div>
+      <p>[One line: what PPP is and who it is for.]</p>
+      <ul><li>[What I owned: roadmap, backlog priorities, releases]</li><li>[Who I worked with: developers, stakeholders]</li><li>[Result]</li></ul></article>
+    <article class="doc" style="--c:var(--accent)"><p class="type" style="color:var(--accent)">Product Manager</p><h3>FIX People</h3><div style="margin:0 0 .7rem"><span class="tag">Full-time</span><span class="tag">HRIS-like system</span></div>
+      <p>[One line: what FIX People does and who uses it.]</p>
+      <ul><li>[What I owned: roadmap, backlog priorities, releases]</li><li>[Who I worked with: developers, stakeholders]</li><li>[Result]</li></ul></article>
+    <article class="doc" style="--c:var(--accent)"><p class="type" style="color:var(--accent)">Product Manager</p><h3>GYM Management System</h3><div style="margin:0 0 .7rem"><span class="tag">Freelance</span><span class="tag">Also Business Analyst</span></div>
+      <p>Product owner and analyst on the same project, which is why the spec is a PRD rather than a BRD. <a href="#t3" style="color:var(--accent)">See the documents</a>.</p>
+      <ul><li>[What I owned: roadmap, backlog priorities, releases]</li><li>[Who I worked with: developers, stakeholders]</li><li>[Result]</li></ul></article>
+  </div>
+</div></section>
+
+<section class="contact" id="contact"><div class="wrap">
+  <h2>Let's talk</h2>
+  <p>Need someone who writes the spec, draws the screens, and reads the data? Get in touch.</p>
+  <a class="btn primary" href="mailto:YOUR_EMAIL@example.com">Send an email</a>
+  <a class="btn" href="https://www.linkedin.com/in/YOUR_LINKEDIN" target="_blank" rel="noopener">LinkedIn</a>
+</div></section>
+<footer><div class="wrap">Angelo, Business Analyst &amp; Product Manager</div></footer>
+
+<script>
+const docs=[...document.querySelectorAll('#work .doc')],projects=[...document.querySelectorAll('.project')];
+const n=(a,b)=>'<li><b>'+a+'</b><span>'+b+'</span></li>';
+document.getElementById('stats').innerHTML=n(docs.length,'documents')+n(projects.length,'projects')+n(new Set(docs.map(d=>d.dataset.t)).size,'document types');
+document.querySelectorAll('.chip').forEach(c=>c.addEventListener('click',()=>{
+  document.querySelectorAll('.chip').forEach(x=>x.setAttribute('aria-pressed',x===c));
+  const f=c.dataset.f;
+  docs.forEach(d=>d.hidden=f!=='all'&&d.dataset.t!==f);
+  projects.forEach(p=>p.hidden=!p.querySelector('.doc:not([hidden])'));
+}));
+</script>
+</body>
+</html>
