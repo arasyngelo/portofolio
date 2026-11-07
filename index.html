@@ -61,6 +61,17 @@ nav ul a.on{color:var(--accent);background:var(--card2)}
 .doc.test{--c:var(--map)}
 .avatar{position:relative;display:grid;place-items:center;width:7rem;height:7rem;margin:0 0 1.5rem;border-radius:50%;overflow:hidden;background:var(--card2);border:3px solid var(--card);box-shadow:var(--shadow);font:800 1.9rem var(--head);color:var(--accent)}
 .avatar img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.avatar{padding:0;cursor:zoom-in;transition:transform .25s,box-shadow .25s}
+.avatar:hover{transform:scale(1.06)}
+.avatar:not(:has(img)){cursor:default}.avatar:not(:has(img)):hover{transform:none}
+.lightbox{border:0;padding:0;background:transparent;overflow:visible;max-width:none;max-height:none}
+.lightbox::backdrop{background:#05070FCC;backdrop-filter:blur(6px)}
+.lightbox img{display:block;width:auto;height:auto;max-width:min(92vw,34rem);max-height:85vh;object-fit:contain;border-radius:20px;background:var(--card);box-shadow:0 30px 80px #000A}
+.lightbox[open]{animation:pop .28s cubic-bezier(.2,.8,.2,1)}
+.lightbox[open]::backdrop{animation:fadein .28s}
+.lightbox .close{position:absolute;top:-.8rem;right:-.8rem;width:2.4rem;height:2.4rem;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--ink);font:600 1.3rem/1 var(--body);cursor:pointer;box-shadow:var(--shadow)}
+@keyframes pop{from{opacity:0;transform:scale(.85)}}
+@keyframes fadein{from{opacity:0}}
 .filters{display:flex;flex-wrap:wrap;gap:.5rem;padding:2.25rem 0 .5rem}
 .chip{font:600 .9rem var(--body);color:var(--muted);background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.4rem 1.05rem;cursor:pointer;transition:all .2s}
 .chip:hover{color:var(--ink);border-color:var(--muted)}
@@ -112,7 +123,7 @@ footer{padding:1.5rem 0;color:var(--muted);font-size:.85rem;border-top:1px solid
 
 <header class="hero"><div class="wrap">
   <div>
-    <div class="avatar"><span aria-hidden="true">AA</span><img src="Pas Foto.JPG" alt="Photo of Angelo Arasy Buana" width="112" height="112" onerror="this.remove()"></div>
+    <button class="avatar" id="avatarBtn" type="button" aria-label="View larger photo" aria-haspopup="dialog"><span aria-hidden="true">AA</span><img src="Pas Foto.JPG" alt="Photo of Angelo Arasy Buana" width="112" height="112" onerror="this.remove()"></button>
     <h1>Angelo Arasy Buana</h1>
     <p class="role">Business Analyst &amp; Product Manager</p>
     <p class="lead">Business Analyst with 1+ year of experience bridging business and technical teams through requirements analysis, process modeling, and documentation. 100+ user stories written and 150+ functional requirements identified with cross-functional stakeholders.</p>
@@ -231,6 +242,8 @@ footer{padding:1.5rem 0;color:var(--muted);font-size:.85rem;border-top:1px solid
 </div></section>
 <footer><div class="wrap">Angelo, Business Analyst &amp; Product Manager</div></footer>
 
+<dialog class="lightbox" id="photoDlg" aria-label="Profile photo"><button class="close" type="button" aria-label="Close photo">&times;</button><img alt="Photo of Angelo Arasy Buana"></dialog>
+
 <script>
 const root=document.documentElement,reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
 root.classList.add('js');
@@ -278,6 +291,10 @@ if(!reduce){
     stack.style.setProperty('--ry',x*10+'deg');stack.style.setProperty('--rx',-y*8+'deg')});
   hero.addEventListener('pointerleave',()=>{stack.style.setProperty('--ry','0deg');stack.style.setProperty('--rx','0deg')});
 }
+/* profile photo popup */
+const dlg=document.getElementById('photoDlg'),pb=document.getElementById('avatarBtn');
+pb.addEventListener('click',()=>{const im=pb.querySelector('img');if(!im||!dlg.showModal)return;dlg.querySelector('img').src=im.currentSrc||im.src;dlg.showModal()});
+dlg.addEventListener('click',()=>dlg.close());
 </script>
 </body>
 </html>
